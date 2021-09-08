@@ -8,6 +8,7 @@ import EmailList from './components/EmailList';
 
 function App() {
   return (
+    // npm install react-router-dom
     <Router>
       <div className="app">
         <Header />
