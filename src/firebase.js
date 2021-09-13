@@ -1,5 +1,10 @@
-import firebase from 'firebase'; // Module not found: Can't resolve 'firebase' in 'C:\Users\Sergio DC\Desktop\gmail-clone\src'
-                                 // :\Users\Sergio DC\Desktop\gmail-clone\src' Error from chokidar (C:\node_modules): Error: EBUSY: resource busy or locked, lstat 'C:\DumpStack.log.tmp'
+import firebase from 'firebase';
+// IMPORTANT !! To avoid this error in firebase v9:
+// Module not found: Can't resolve 'firebase' in 'C:\Users\Sergio DC\Desktop\gmail-clone\src'
+// execute this command:
+// npm uninstall firebase
+// npm i firebase@^8.10.0
+
 const firebaseConfig = {
     apiKey: "AIzaSyA991VSRKjNjPEQBKlnBEwsDe2X9rd6Geo",
     authDomain: "clone-7a7c6.firebaseapp.com",
