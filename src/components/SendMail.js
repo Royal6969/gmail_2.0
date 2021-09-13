@@ -5,6 +5,8 @@ import { Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { closeSendMessage } from '../features/mailSlice';
+import { db } from '../firebase';
+import firebase from 'firebase';
 
 function SendMail() {
 
@@ -14,6 +16,14 @@ function SendMail() {
 
     const onSubmit = (formData) => {
         console.log(formData);
+        db.collection('emails').add({
+            to: formData.to,
+            subject: formData.subject,
+            message: formData.message,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+
+        dispatch(closeSendMessage());
     };
 
     const dispatch = useDispatch();
@@ -38,7 +48,6 @@ function SendMail() {
                         required: "Required",
                     })}
                 />
-                {/* {errors.message && errors.message.message} */}
                 {errors.to && (
                     <p className="sendMail__error">To is required!</p>
                 )}
@@ -51,7 +60,6 @@ function SendMail() {
                         required: "Required",
                     })}
                 />
-                {/* {errors.message && errors.message.message} */}
                 {errors.subject && (
                     <p className="sendMail__error">Subject is required!</p>
                 )}
@@ -65,7 +73,6 @@ function SendMail() {
                         required: "Required",
                     })}
                 />
-                {/* {errors.message && errors.message.message} */}
                 {errors.message && (
                     <p className="sendMail__error">Message is required!</p>
                 )}
