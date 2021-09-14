@@ -32,15 +32,15 @@
     padding-right: 5px;
 }
 
-.emailRow__title {
-    font-size: 13px;
-    flex: 0.3;
-}
-
 .emailRow__time {
     padding-right: 15px;
     font-size: 9px;
     font-weight: bold;
+}
+
+.emailRow__title {
+    font-size: 13px;
+    flex: 0.3;
 }
 
 .emailRow__description {

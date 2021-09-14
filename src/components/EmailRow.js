@@ -5,13 +5,30 @@ import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import LabelImportantOutlinedIcon from '@material-ui/icons/LabelImportantOutlined';
 import '../styles/EmailRow.css';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { selectMail } from '../features/mailSlice';
 
-function EmailRow({ title, subject, description, time }) {
+function EmailRow({ id, title, subject, description, time }) {
 
     const history = useHistory(); // useHistory is a powerful function that allow to go into/back to between two screens  
+    const dispatch = useDispatch();
+
+    const openMail = () => {
+        dispatch(
+            selectMail({
+                id,
+                title,
+                subject,
+                description,
+                time,
+            })
+        );
+
+        history.push("/mail");
+    };
 
     return (
-        <div onClick={() => history.push("/mail")} className="emailRow">
+        <div onClick={openMail} className="emailRow">
             <div className="emailRow__options">
                 <CheckBox />
                 <IconButton>
@@ -35,7 +52,7 @@ function EmailRow({ title, subject, description, time }) {
                 </h4>
             </div>
 
-            <p className="emailRow__description">
+            <p className="emailRow__time">
                 {time}
             </p>
         </div>
